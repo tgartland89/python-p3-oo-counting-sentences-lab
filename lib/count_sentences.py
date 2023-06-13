@@ -14,3 +14,21 @@ class MyString:
       print("The value must be a string.")
 
   value = property(get_value, set_value)
+
+  def is_sentence(self):
+    return self._value.endswith('.')
+  
+  def is_question(self):
+    return self._value.endswith("?")
+  
+  def is_exclamation(self):
+    return self._value.endswith("!")
+  
+  def count_sentences(self):
+    value = self.value
+    for marks in ['!' , '?']:
+      value = value.replace(marks, '.')
+    
+    sentences = [ s for s in value.split('.') if s]
+
+    return len(sentences)
